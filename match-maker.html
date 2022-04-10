@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<meta charset="UTF-8">
+<title>MatchMaker</title>
+</head>
+<body>
+<h1>MatchMaker </h1>
+        <label>
+            Chicken Momo is far better than Chicken Chowmein.
+        </label><br />
+        <select id="q1">
+            <option value="5"> Strongly Agree</option>
+            <option value="4"> Agree</option>
+            <option value="3"> Neutral</option>
+            <option value="2"> DisAgree</option>
+            <option value="1"> Strongly DisAgree</option>
+        </select>
+        <br /><br />
+        <label><br />
+            You like living in Australia than USA. 
+            </label>
+        <select id="q2">
+            <option value="5"> Strongly Agree</option>
+            <option value="4"> Agree</option>
+            <option value="3"> Neutral</option>
+            <option value="2"> DisAgree</option>
+            <option value="1"> Strongly DisAgree</option>
+        </select>
+        <br /><br />
+        <label><br />
+            Tesla is an amazing car.
+            </label>
+        <select id="q3">
+            <option value="5"> Strongly Agree</option>
+                    <option value="4"> Agree</option>
+                    <option value="3"> Neutral</option>
+                    <option value="2"> DisAgree</option>
+                    <option value="1"> Strongly DisAgree</option>
+                </select>
+                <br /><br />
+                <label>
+            I love watching football.
+            </label><br />
+        <select id="q4">
+            <option value="5"> Strongly Agree</option>
+                    <option value="4"> Agree</option>
+                    <option value="3"> Neutral</option>
+                    <option value="2"> DisAgree</option>
+                    <option value="1"> Strongly DisAgree</option>
+                </select>
+                <br /><br />
+                <label><br />
+            Cristiano Ronaldo is better than Lionel Messi.
+            </label>
+        <select id="q5">
+            <option value="5"> Strongly Agree</option>
+                    <option value="4"> Agree</option>
+                    <option value="3"> Neutral</option>
+                    <option value="2"> DisAgree</option>
+                    <option value="1"> Strongly DisAgree</option>
+                </select>
+                <br /><br />
+            <button onclick="calculateCompatibility()">
+
+            Calculate Compatibility
+        </button>
+        <br /><br />
+        
+        <p id="compatibility"></p>
+        <script>
+            console.log("Starting Matchmaker");
+            function calculateCompatibility() {
+                console.log("calculate Compatibility()");
+                document.getElementById("compatibility").innerHTML = "Your Compatibility is...";
+                const DESIRED_RESPONSE = [
+                    5, /* Strongly Agree */
+                    2, /* Agree */
+                    1, /* Strongly DisAgree */
+                    4, /* DisAgree */
+                    3, /* Neutral */
+                MAX_SCORE =10
+            ]
+                let question1Response = document.getElementById("q1").selectedOptions[0].value;
+                let question2Response = document.getElementById("q2").selectedOptions[0].value; 
+                let question3Response = document.getElementById("q3").selectedOptions[0].value;
+                let question4Response = document.getElementById("q4").selectedOptions[0].value;
+                let question5Response = document.getElementById("q5").selectedOptions[0].value;
+                console.log("Question 1 Answers:")
+                console.log(document.getElementById("q1").selectedOptions[0].text)
+                console.log(document.getElementById("q1").selectedOptions[0].value)
+                console.log(question1Response)
+                console.log("Question 2 Answers:")
+                console.log(document.getElementById("q2").selectedOptions[0].text)
+                console.log(document.getElementById("q2").selectedOptions[0].value)
+                console.log(question2Response)
+                console.log("Question 3 Answers:")
+                console.log(document.getElementById("q3").selectedOptions[0].text)
+                console.log(document.getElementById("q3").selectedOptions[0].value)
+                console.log(question3Response)
+                console.log("Question 4 Answers:")
+                console.log(document.getElementById("q4").selectedOptions[0].text)
+                console.log(document.getElementById("q4").selectedOptions[0].value)
+                console.log(question4Response)
+                console.log("Question 5 Answers:")
+                console.log(document.getElementById("q5").selectedOptions[0].text)
+                console.log(document.getElementById("q5").selectedOptions[0].value)
+                console.log(question5Response)
+                let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0])
+                let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1])
+                let question3Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[2])
+                let question4Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[3])
+                let question5Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[4])
+                console.log("c1="+question1Compatibility);
+                console.log("c2="+question2Compatibility);
+                console.log("c3="+question3Compatibility);
+                console.log("c4="+question4Compatibility);
+                console.log("c5="+question5Compatibility);
+                let totCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility
+                let percentCompatibility = Math.ceil((totCompatibility/MAX_SCORE) * 100)
+    document.getElementById("compatibility").innerHTML = "Your Compatibility is: " + percentCompatibility
+            }
+        </script>
+    </body>
+</html>
